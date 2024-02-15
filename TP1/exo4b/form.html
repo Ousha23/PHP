@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un petit formulaire</title>
+</head>
+<body>
+    <h1>Un petit formulaire (pour commencer)</h1>
+    <p>Merci de renseigner les informations suivantes : </p>
+    <form action="formSuite.php" method="get">
+        <label for="nom">Votre nom :</label>
+        <input type="text" name="nom" id="nom"><br>
+        <label for="age">Votre âge :</label>
+        <input type="text" name="age" id="age"><br>
+        <span>Votre situation maritale</span>
+        <input type="radio" name="situation" id="marie" value="marie">
+        <label for="marie">Marié</label>
+        <input type="radio" name="situation" id="veuf" value="veuf">
+        <label for="veuf">Veuf(ve)</label>
+        <input type="radio" name="situation" id="celib" value="celib">
+        <label for="celib">Célibataire</label> <br>
+        <span>Vos centre d'intérêt :</span>
+        <input type="checkbox" name="centre[]" id="net" value="internet">
+        <label for="net">Internet</label>
+        <input type="checkbox" name="centre[]" id="micro" value="micro">
+        <label for="micro">Micro-informatique</label>
+        <input type="checkbox" name="centre[]" id="jeux" value="jeux">
+        <label for="jeux">Jeux Vidéo</label><br>
+        <!-- <input type="reset" value="Recommencer"> -->
+        <input type="submit" value="Envoyer">
+    </form>
+    
+</body>
+</html>
