@@ -22,6 +22,9 @@
     ParcVehicule::enregistrer($u1);
     ParcVehicule::enregistrer($c1);
     ParcVehicule::getParc();
+    // $pv1 = new ParcVehicule();
+    // $pv1 -> enregistrer($f1);
+    // $pv1 -> getParc();
 
     echo "Création Outil :".RC;
     $o1 = new Outil(1,"testOutillage",true);
