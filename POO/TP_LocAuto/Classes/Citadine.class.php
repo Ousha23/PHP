@@ -22,7 +22,7 @@
         // ------------------ METHODES
         public function planifierRevision(){
             //TODO
-            echo "abstract vide C";
+            echo "Il faut planifier une révision pour ma citadine";
         }
         /**
          * Récup l'id

@@ -16,7 +16,8 @@
         }
         // ------------------ METHODES
         public function planifierRevision(){
-            echo "abstract vide U";
+            //TODO
+            echo "Il faut planifier une révision pour mon utilitaire";
         }
 
         public function getIdentifiant():string{

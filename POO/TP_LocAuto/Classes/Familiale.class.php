@@ -22,7 +22,7 @@
          */
         public function planifierRevision(){
             //TODO
-            echo "abstract vide F";
+            echo "Il faut planifier une révision pour ma familiale";
          }
         /**
          * Récupérer l'ID
