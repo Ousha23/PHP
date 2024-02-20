@@ -30,7 +30,8 @@
     echo "Création Depanneuse :".RC;
     $d1 = new Depanneuse(1,"testDepanneuse");
     echo $d1.RC;
-
+    
+    echo "Planification de Révision : ".RC;
     $tVehicule = [$f1,$u1,$c1];
     foreach($tVehicule as $vehicule){
         $vehicule->planifierRevision();
