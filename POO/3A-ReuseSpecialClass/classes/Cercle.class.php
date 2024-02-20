@@ -1,27 +1,24 @@
 <?php
 
-class Cercle {
+class Cercle extends Form {
     //------------------- propriétés
-    private const VAL_DEFAULT = 0;
-    private $x;
-    private $y;
+    
     private $rayon;
 
     //------------------- Constructeur
-    public function __construct(float $x = self::VAL_DEFAULT,float $y = self::VAL_DEFAULT,float $rayon = self::VAL_DEFAULT){
+    public function __construct(float $rayon = parent::VAL_DEFAULT, float $x = parent::VAL_DEFAULT,float $y = parent::VAL_DEFAULT){
+        parent::__construct($x,$y);
         $this->setRayon($rayon);
-        $this->setX($x);
-        $this->setY($y);
     }
 
     public function __toString():string {
-        $msg = "coordonnées (x,y) : (".$this->x.",".$this->y.")\n";
+        $msg = parent::__toString();
         $msg .= "Rayon de : ".$this->rayon."\n";
         $msg .= "Surface : ".$this->claculerSurface()."\n";
         $msg .= "Circonférence : ".$this->calculerCirconference()."\n";
         return $msg;
     }
-    //------------------- Méthodes
+    //------------------- Méthodes de comportement
     public function calculerCirconference():float {
         return round((2*$this->rayon*M_PI),2);
     }
@@ -31,41 +28,7 @@ class Cercle {
     }
     
     //------------------- Les accesseurs (GETTERS - SETTERS)
-    /**
-     * Get the value of x
-     */
-    public function getX()
-    {
-        return $this->x;
-    }
-
-    /**
-     * Set the value of x
-     */
-    public function setX($x): self
-    {
-        $this->x = $x;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of y
-     */
-    public function getY()
-    {
-        return $this->y;
-    }
-
-    /**
-     * Set the value of y
-     */
-    public function setY($y): self
-    {
-        $this->y = $y;
-
-        return $this;
-    }
+   
 
     /**
      * Get the value of rayon
