@@ -32,6 +32,13 @@
             return (($this->x+$this->y)%2)=== 0 ? self::NOIRE : self::BLANCHE;
         }
 
+        /**
+         * Méthode abstraite qui oblige les classes filles à vérifier la possibilité du déplacement ou pas
+         *
+         * @param integer $x
+         * @param integer $y
+         * @return boolean
+         */
         abstract public function peutAllerA(int $x,int $y):bool;
 
         public function __toString():string {
