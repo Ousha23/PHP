@@ -1,8 +1,11 @@
 <?php
-    class PieceEchecs {
+    abstract class PieceEchecs {
+        public const BLANCHE =1;
+        public const NOIRE =2;
         protected $x; // colonne
         protected $y; // ligne
-        protected $color; // couleur pièce
+        private $color; // couleur pièce
+        private static $pieces;
 
         /**
          * Constructeur Class PieceEchecs
@@ -15,6 +18,7 @@
             $this->setX($x);
             $this->setY($y);
             $this->setColor($color);
+            
         }
 
         // --------------- methodes
@@ -24,17 +28,16 @@
         }
 
         public function getColorCase(int $colorCase){
-            if ($this->color == 1) $colorCase = 2;
-            else $colorCase = 1;
-            return $colorCase;
+
+            return (($this->x+$this->y)%2)=== 0 ? self::NOIRE : self::BLANCHE;
         }
 
-
+        abstract public function peutAllerA(int $x,int $y):bool;
 
         public function __toString():string {
-            if ($this->color == 1) $msgP = "Blanche";
+            if ($this->color == self::BLANCHE) $msgP = "Blanche";
             else $msgP = "noire";
-            if ($this->getColorCase($this->color) == 1) $msgC = "Blanche";
+            if ($this->getColorCase($this->color) == self::BLANCHE) $msgC = "Blanche";
             else $msgC = "noire";
             return get_class($this).":\n".
                     "X : ".$this->x.",\n".
@@ -82,8 +85,8 @@
          */
         public function setColor(int $color): self
         {
-            if ($color != 1 && $color != 2){
-                $this->color = 1;
+            if ($color != self::BLANCHE && $color != self::NOIRE){
+                $this->color = self::BLANCHE;
             } else $this->color = $color;
 
             return $this;
