@@ -7,7 +7,6 @@
                     (abs($x - $this->x) == 1 and abs($y - $this->y) == 0)) {
                     return true;
                 } else return false;
-            } else 
-                return false;
-            }
+            } else return false;
         }
+    }
