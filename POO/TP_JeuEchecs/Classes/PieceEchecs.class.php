@@ -40,8 +40,7 @@
             if ($this->getColorCase($this->color) == self::BLANCHE) $msgC = "Blanche";
             else $msgC = "noire";
             return get_class($this).":\n".
-                    "X : ".$this->x.",\n".
-                    "Y : ".$this->y.",\n".
+                    "Position (X,Y) :(".$this->x.",".$this->y."),\n".
                     "Couleur Piece : ".$this->color." - ".$msgP.",\n".
                     "Couleur Case : ".$this->getColorCase($this->color)." - ".$msgC."\n";
 
