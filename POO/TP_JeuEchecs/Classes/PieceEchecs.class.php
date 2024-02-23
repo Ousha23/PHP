@@ -97,4 +97,20 @@
 
             return $this;
         }
+
+        /**
+         * Get the value of x
+         */
+        public function getX()
+        {
+                return $this->x;
+        }
+
+        /**
+         * Get the value of y
+         */
+        public function getY()
+        {
+                return $this->y;
+        }
     }
