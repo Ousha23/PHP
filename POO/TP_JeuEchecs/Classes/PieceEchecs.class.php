@@ -40,7 +40,21 @@
          * @return boolean
          */
         abstract public function peutAllerA(int $x,int $y):bool;
-
+        
+        /**
+         * Verifier si la piece peut manger la piece en parametre 
+         *
+         * @param PieceEchecs $piece
+         * @return boolean
+         */
+        public function peutManger(PieceEchecs $piece):bool {
+            return (($this->color != $piece->getColor()) && $this->peutAllerA($piece->x, $piece->y));
+        }
+        /**
+         * Convertie les données piece en chaine de caractère
+         *
+         * @return string
+         */
         public function __toString():string {
             if ($this->color == self::BLANCHE) $msgP = "Blanche";
             else $msgP = "noire";
