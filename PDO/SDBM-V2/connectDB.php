@@ -9,7 +9,7 @@
         $connexion = new PDO("mysql:".PARAM_HOST.";port=".PARAM_PORT.";dbname=".PARAM_DB,PARAM_USER,PARAM_PWD);
             
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connexion Réussie à la base de donnée .\n";
+        //echo "Connexion Réussie à la base de donnée .\n";
 
     } catch(PDOException $e) {
         echo "La connexion a échouée : ".$e->getMessage();
@@ -59,12 +59,12 @@
     foreach ($lignes as $ligne) 
         echo $ligne["ID_PAYS"]."-".$ligne["NOM_PAYS"]."-".$ligne["ID_CONTINENT"]."\n";
     */
-    $paysRecherche = 5;
-    $sql=" SELECT * FROM `marque` m 
-        JOIN pays p ON m.ID_PAYS = p.ID_PAYS
-        WHERE p.ID_PAYS = :paysRecherche"; 
+    // $paysRecherche = 5;
+    // $sql=" SELECT * FROM `marque` m 
+    //     JOIN pays p ON m.ID_PAYS = p.ID_PAYS
+    //     WHERE p.ID_PAYS = :paysRecherche"; 
 
-    $resultat = $connexion->prepare($sql);
-    $resultat->execute(array(':paysRecherche'=>$paysRecherche));
-    $lignes = $resultat->fetchAll();
-    var_dump($lignes);
+    // $resultat = $connexion->prepare($sql);
+    // $resultat->execute(array(':paysRecherche'=>$paysRecherche));
+    // $lignes = $resultat->fetchAll();
+    // var_dump($lignes);
