@@ -22,8 +22,8 @@
             $content .= "<td>".$value."</td>";
         }
         $code = $record["ID_CONTINENT"];
-        $linkUpdate = "continentUpdate.php?code=$code";
-        $linkDelete = "continentDelete.php?code=$code";
+        $linkUpdate = "continentUpdate.view.php?code=$code";
+        $linkDelete = "continentDelete.view.php?code=$code";
         $content .= "<td><a href=$linkUpdate><button class='btn btn-warning m-1'>Modifier</button></a>";
         $content .="<a href=$linkDelete><button class='btn btn-danger m-1'>Supprimer</button></a></td>";
         $content .="</tr>";
