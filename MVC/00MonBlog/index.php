@@ -4,6 +4,6 @@ try {
     $billets = getBillets();
     require_once 'vueAccueil.php';
 } catch (Exception $e){
-    $e->getMessage();
+    $msgErreur = $e->getMessage();
     require_once 'vueErreur.php';
 }
