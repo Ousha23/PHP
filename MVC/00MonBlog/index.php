@@ -1,6 +1,9 @@
 <?php
 require_once 'Model.php';
-
-$billets = getBillets();
-
-require_once 'vueAccueil.php';
+try {
+    $billets = getBillets();
+    require_once 'vueAccueil.php';
+} catch (Exception $e){
+    $e->getMessage();
+    require_once 'vueErreur.php';
+}
