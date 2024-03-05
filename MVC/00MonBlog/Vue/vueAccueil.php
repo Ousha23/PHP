@@ -1,21 +1,15 @@
-<?php
-$titre = 'Mon Blog';
+<?php $this->titre = "Mon Blog"; ?>
 
-ob_start();
-foreach ($billets as $billet): ?>
+<?php foreach ($billets as $billet):
+    ?>
     <article>
         <header>
-            <a href="<?= "index.php?action=billet&id=".$billet['id']?>">
-            <h1 class="titreBillet"><?= $billet['titre'] ?></h1></a>
+            <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
+                <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
+            </a>
             <time><?= $billet['date'] ?></time>
         </header>
-            <p><?= $billet['contenu'] ?></p>
+        <p><?= $billet['contenu'] ?></p>
     </article>
     <hr />
-<?php endforeach; 
-$contenu = ob_get_clean();
-
-require_once 'Vue/gabarit.php';
-?>
-
-        
+<?php endforeach; ?>

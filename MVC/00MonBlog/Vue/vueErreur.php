@@ -1,10 +1,3 @@
-<?php
-    $titre = "Mon Blog";
-
-    ob_start()
-?>
+<?php $this->titre = "Mon Blog"; ?>
 <p>Une Erreur est survenu : <?php echo $msgErreur ?></p>
-<?php 
-    $contenu = ob_get_clean();
-    require 'Vue/gabarit.php';
-?>
+

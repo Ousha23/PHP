@@ -1,8 +1,5 @@
-<?php
-$titre = "Mon Blog : ".$billet['titre'];
+<?php $this->titre = "Mon Blog"; ?>
 
-ob_start();
-?>
 <article>
     <header>
         <h1 class="titreBillet"><?= $billet['titre']?></h1>
@@ -19,5 +16,4 @@ ob_start();
         <p><?=$commentaire['auteur']?> dit :</p>
         <p><?=$commentaire['contenu']?></p>
     <?php endforeach;
-    $contenu = ob_get_clean();
-    require_once 'Vue/gabarit.php';
+
