@@ -16,8 +16,8 @@ ob_start();
 </header>
 <?php 
     foreach ($commentaires as $commentaire):?>
-        <p><?=$commentaire['auteur']?></p>
+        <p><?=$commentaire['auteur']?> dit :</p>
         <p><?=$commentaire['contenu']?></p>
     <?php endforeach;
     $contenu = ob_get_clean();
-    require_once 'gabarit.php';
+    require_once 'Vue/gabarit.php';

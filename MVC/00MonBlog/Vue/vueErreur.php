@@ -6,5 +6,5 @@
 <p>Une Erreur est survenu : <?php echo $msgErreur ?></p>
 <?php 
     $contenu = ob_get_clean();
-    require 'gabarit.php';
+    require 'Vue/gabarit.php';
 ?>

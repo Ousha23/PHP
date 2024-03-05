@@ -1,5 +1,5 @@
 <?php
-require 'Model.php';
+require 'Modele/Model.php';
 try {
  if (isset($_GET['id'])) {
  // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
@@ -17,5 +17,5 @@ try {
 }
 catch (Exception $e) {
  $msgErreur = $e->getMessage();
- require 'vueErreur.php';
+ require 'Vue/vueErreur.php';
 }
