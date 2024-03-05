@@ -1,5 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once "connectDB.php";
+
 if (isset($_GET["code"])){
     $idToDelete = $_GET["code"];
     try {
@@ -37,3 +41,4 @@ if (isset($_GET["code"])){
         echo $e->getMessage();
     }
 }
+require_once "views/continentDelete.view.php";

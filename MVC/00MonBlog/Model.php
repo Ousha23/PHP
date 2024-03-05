@@ -22,6 +22,8 @@
     }
 
     function getBDD() {
-        $bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8','root','root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        //vMAMP
+        //$bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8','root','root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         return $bdd;
     }

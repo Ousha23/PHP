@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $titre = "Suppression d'un continent";
 require_once "header.view.php";
 
