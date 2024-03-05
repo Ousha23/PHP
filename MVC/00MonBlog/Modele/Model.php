@@ -1,27 +1,26 @@
 <?php
-    function getBillets() {
-        $bdd = getBDD();
-        $billets = $bdd->query('select BIL_ID as id, BIL_DATE as date, BIL_TITRE as titre, BIL_CONTENU as contenu from t_billet order by BIL_ID desc');
-        return $billets;
-    }
 
-    function getBillet($idBillet){
-        $bdd = getBDD();
-        $billet = $bdd->prepare('select BIL_ID as id, BIL_DATE as date, BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET where BIL_ID=?');
-
-        $billet->execute(array($idBillet));
-        if ($billet->rowCount() == 1) return $billet->fetch();
-        else throw new Exception("Aucun billet ne correspond à l'identifiant : $idBillet");
-    }
-
-    function getCommentaires($idBillet){
-        $bdd = getBDD();
-        $commentaires = $bdd->prepare('select COM_ID as id, COM_DATE as date, COM_AUTEUR as auteur, COM_CONTENU as contenu FROM `t_commentaire` WHERE BIL_ID=?');
-        $commentaires->execute(array($idBillet));
-        return $commentaires;
-    }
-
-    function getBDD() {
-        $bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        return $bdd;
+    abstract class Modele {
+        // Objet PDO d'accès à la BD
+        private $bdd;
+        // Exécute une requête SQL éventuellement paramétrée
+        protected function executerRequete($sql, $params = null) {
+            if ($params == null) {
+            $resultat = $this->getBdd()->query($sql); // exécution directe
+            }
+            else {
+            $resultat = $this->getBdd()->prepare($sql); // requête préparée
+            $resultat->execute($params);
+            }
+            return $resultat;
+        }
+        // Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
+        private function getBdd() {
+            if ($this->bdd == null) {
+            // Création de la connexion
+            $this->bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8',
+            'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            }
+            return $this->bdd;
+        }
     }
