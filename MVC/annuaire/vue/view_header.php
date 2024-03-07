@@ -1,4 +1,3 @@
-<?php require "index.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
