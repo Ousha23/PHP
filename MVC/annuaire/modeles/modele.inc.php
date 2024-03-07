@@ -3,7 +3,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    function getListContacts(){
+    function connectBDD(){
         $cheminFichier = "param.ini";
         if (!file_exists($cheminFichier)) {
             throw new Exception("Aucun fichier de configuration trouvé");
@@ -17,10 +17,33 @@
             //$login = $tParametres['login'];
             //$mdp = $tParametres['mdp'];
             $bdd =new PDO($dsn, $login, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            return $bdd;
+        }
+    }
+    function getListContacts(){
+        try {
+            $bdd=connectBDD();
             $sql = 'SELECT * from CONTACT';
             $resultat= $bdd->query($sql);
             $tResultats = $resultat->fetchAll(PDO::FETCH_ASSOC);
             return $tResultats;
+        } catch (PDOException $e){
+            echo "Erreur d'extraction: ".$e->getMessage();
+        }
+            
+    }
+
+    function addContact(string $nom,string $prenom,string $tel){
+        try {
+            $bdd=connectBDD();
+            $sql = "INSERT into CONTACT (`nom`,`prenom`,`telephone`) VALUES (?,?,?)";
+            $resultat = $bdd->prepare($sql);
+            $resultat->execute(array($nom, $prenom, $tel));
+            return true;
+        } catch (PDOException $e){
+                echo "Erreur d'ajout: ".$e->getMessage();
+                return false;
+
         }
     }
 
