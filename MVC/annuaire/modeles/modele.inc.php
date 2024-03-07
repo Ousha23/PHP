@@ -21,31 +21,21 @@
         }
     }
     function getListContacts(){
-        try {
             $bdd=connectBDD();
             $sql = 'SELECT * from CONTACT';
             $resultat= $bdd->query($sql);
             $tResultats = $resultat->fetchAll(PDO::FETCH_ASSOC);
             return $tResultats;
-        } catch (PDOException $e){
-            echo "Erreur d'extraction: ".$e->getMessage();
-        }
-            
     }
 
     function addContact(string $nom,string $prenom,string $tel){
-        try {
             $bdd=connectBDD();
             $sql = "INSERT into CONTACT (`nom`,`prenom`,`telephone`) VALUES (?,?,?)";
             $resultat = $bdd->prepare($sql);
             $resultat->execute(array($nom, $prenom, $tel));
-            return true;
-        } catch (PDOException $e){
-                echo "Erreur d'ajout: ".$e->getMessage();
-                return false;
-
-        }
     }
+
+   
 
    
     

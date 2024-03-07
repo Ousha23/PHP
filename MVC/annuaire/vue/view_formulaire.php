@@ -1,9 +1,4 @@
-<?php 
 
-$titre = 'Ajouter Contact';
-$titrePage = "Ajouter un nouveau contact à l'annuaire";
-require_once "vue/view_header.php";
-?>
 <form action="index.php?action=liste" method = "post">
     <label for="idNom">Nom : </label>
     <input type="text" name="nom" id="idNom"><br><br>
