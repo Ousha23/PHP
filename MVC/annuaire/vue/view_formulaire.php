@@ -6,7 +6,13 @@
     <input type="text" name="prenom" id="idPrenom"><br><br>
     <label for="idTel">Téléphone : </label>
     <input type="text" name="tel" id="idTel"><br><br>
-    <input type="hidden" name="action" value="ajouterContact">
-    <input type="submit" value ="Enregistrer">
+    
+    <?php if ($action == 'ajouter'){ ?>
+        <input type="submit" value ="Enregistrer">
+        <input type="hidden" name="action" value="ajouterContact">
+    <?php } else if ($action == 'rechercher') { ?>
+        <input type="submit" value ="Rechercher">
+        <input type="hidden" name="action" value="searchContact">
+    <?php } ?>
     <input type="reset" value ="Rénitialiser">
 </form>

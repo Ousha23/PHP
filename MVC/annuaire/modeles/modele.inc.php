@@ -2,7 +2,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-
+ 
     function connectBDD(){
         $cheminFichier = "param.ini";
         if (!file_exists($cheminFichier)) {
@@ -21,23 +21,32 @@
         }
     }
     function getListContacts(){
-            $bdd=connectBDD();
-            $sql = 'SELECT * from CONTACT';
-            $resultat= $bdd->query($sql);
-            $tResultats = $resultat->fetchAll(PDO::FETCH_ASSOC);
-            return $tResultats;
+        $bdd=connectBDD();
+        $sql = 'SELECT * from CONTACT';
+        $resultat= $bdd->query($sql);
+        $tResultats = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        return $tResultats;
     }
-
+ 
     function addContact(string $nom,string $prenom,string $tel){
+        try {
             $bdd=connectBDD();
             $sql = "INSERT into CONTACT (`nom`,`prenom`,`telephone`) VALUES (?,?,?)";
             $resultat = $bdd->prepare($sql);
             $resultat->execute(array($nom, $prenom, $tel));
+            return true;
+        } catch (PDOException $e){
+                echo "Erreur d'ajout: ".$e->getMessage();
+                return false;
+ 
+        }
     }
-
-   
-
-   
-    
-
-
+ 
+    function searchContact(string $nom){
+        $bdd=connectBDD();
+        $sql = "SELECT * from CONTACT where `nom` LIKE ?";
+        $resultat = $bdd->prepare($sql);
+        $resultat->execute(array('%'.$nom.'%'));
+        $tResultat = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        return $tResultat;
+    }
