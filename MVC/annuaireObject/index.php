@@ -19,7 +19,6 @@ require_once "modeles/ContactMgr.class.php";
         }
     }
  
-    require_once 'modeles/modele.inc.php';
     $action = 'accueil';
  
     if(isset($_GET['action'])){
@@ -45,7 +44,9 @@ require_once "modeles/ContactMgr.class.php";
             if (isset($_POST['nom'],$_POST['action']) && $_POST['action'] === 'searchContact'){
                 try{
                     $nom = $_POST['nom'];
-                    $tResult = ContactMgr::searchContact($nom);
+                    $prenom = $_POST['prenom'];
+                    $tel = $_POST['tel'];
+                    $tResult = ContactMgr::searchContact($nom, $prenom, $tel);
                     if (count($tResult)==0){
                         $rep = true;
                         $msg = "Aucun contact trouvé";

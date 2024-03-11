@@ -25,11 +25,11 @@
             }
         }
      
-        static function searchContact(string $nom){
+        static function searchContact(string $nom, string $prenom, string $tel){
             $bdd=BDDMgr::connectBDD();
-            $sql = "SELECT * from CONTACT where `nom` LIKE ?";
+            $sql = "SELECT * from CONTACT where `nom` LIKE ? and `prenom` LIKE ? and `telephone` LIKE ?";
             $resultat = $bdd->prepare($sql);
-            $resultat->execute(array('%'.$nom.'%'));
+            $resultat->execute(array('%'.$nom.'%','%'.$prenom.'%','%'.$tel.'%' ));
             $tResultat = $resultat->fetchAll(PDO::FETCH_ASSOC);
             return $tResultat;
         }
