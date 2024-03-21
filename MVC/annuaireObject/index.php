@@ -50,6 +50,9 @@ require_once "modeles/ContactMgr.class.php";
                     if (count($tResult)==0){
                         $rep = true;
                         $msg = "Aucun contact trouvé";
+                        $titre = 'Recherche Contact';
+                        $titrePage = "Liste des contacts";
+                        require_once "vue/view_header.php";
                         require_once "vue/view_rep.php";
                     } else {
                         $titre = 'Recherche Contact';
